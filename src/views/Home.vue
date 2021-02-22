@@ -2,14 +2,16 @@
   <div class="home">
     <h1>{{meigen}}</h1>
     <div class="good">
-      <!-- <button><img src="../assets/logo.png"></button> -->
+      <!-- <GoodButton/> -->
+      <GoodButton v-bind:meigen="meigen"/>
     </div>
   </div>
-
 </template>
 
 <script>
+import GoodButton from '@/components/Button'
 export default {
+    components: { GoodButton },
   name: 'Home',
   data: () => ({
     meigen:''
@@ -27,11 +29,14 @@ export default {
 </script>
 
 <style scoped>
+.home{
+  width: 100%;
+  height: 90%;
+  /* border: 1px solid; */
+}
 h1{
   text-align:center;
-  font-size:130px;
+  font-size:100px;
 }
-.good{
-  background: red;
-}
+
 </style>

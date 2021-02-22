@@ -14,9 +14,12 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+  /* background-color:blue; */
+  border: 1px solid;
+  }
 ul {
-  margin : 0;
-  padding : 0;
+  margin-bottom : 0;
   font-size : 18px;
   font-weight : 900;
   text-align: center;

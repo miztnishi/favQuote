@@ -2,7 +2,6 @@
   <div id="app">
     <div id="nav">
       <Nav/>
-
     </div>
     <router-view/>
   </div>
@@ -11,7 +10,6 @@
 import Nav from '@/components/Nav'
 export default {
   components: { Nav },
-  
 }
 </script>
 
@@ -22,9 +20,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-}
-
-#nav {
   padding: 30px;
 }
+
+// #nav {
+//   padding: 30px;
+// }
 </style>
