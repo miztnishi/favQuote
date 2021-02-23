@@ -5,15 +5,23 @@ export const favorite = {
     state: { favoriteList:null},
     mutations: {
       setFavorite(state, param){
-        state.favorite = param.favorite
+        state.favoriteList = param
       }
     },
     actions: {
       async saveFavorite(_,{ data }){
         const param = {meigen : data}
         try {
-          const response = await axios.post('http://localhost:3000/save',param)
-          return response
+          await axios.post('http://localhost:3000/meigenAction/save',param)
+          return Promise.resolve('Success')
+        } catch (error){
+          console.log(error)
+          return Promise.reject(error)
+        }
+      },
+      async getFavoritesList(){
+        try {
+          return await axios.get('http://localhost:3000/meigenAction/get')
         } catch (e){
           console.log(e)
         }

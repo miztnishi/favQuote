@@ -1,8 +1,8 @@
 <template>
 <div class="button">
   <!-- <button v-on:click="saveQuote" :disabled="isValid" v-bind:class="{btnDisabled:isValid}">Good!</button> -->
-  <button v-on:click="saveQuote" v-if="!isValid">Good!</button>
-  <div>{{counter}}</div>
+  <button v-on:click="saveQuote" :disabled="btnDisabled" v-if="!isValid">Good!</button>
+  <div>{{this.message}}</div>
   <div>{{this.resMeigen}}</div>
 </div>
 </template>
@@ -17,8 +17,9 @@ export default {
     }
   },
   data:() =>({
-    counter: 0,
-    resMeigen: ''
+    message: 'aaaaa',
+    resMeigen: '',
+    btnDisabled: false
   }),
   computed:{
     isValid() {
@@ -31,15 +32,19 @@ export default {
   },
   methods:{
     addCounter () {
-      this.counter += 1;
+      this.message += 1;
     },
     saveQuote () {
       //console.log(this.meigen)
+      // if(this.btnDisabled === true){
+      //   this.message = 'すでに登録されています'
+      //   return
+      // }
       this.$store.dispatch('favorite/saveFavorite',{
         data: this.meigen
       }).then((response) => {
-        console.log("response:" + response.data.meigen)
-        this.resMeigen = response.data.meigen
+        this.resMeigen = response
+        this.btnDisabled = true
       })
     }
   }
